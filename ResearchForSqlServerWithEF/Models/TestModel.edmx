@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="testdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'TestDB.dbo.TableB' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="TableB">
+          <Key>
+            <PropertyRef Name="TableAId" />
+            <PropertyRef Name="NumberOfProcess" />
+            <PropertyRef Name="DateTime" />
+          </Key>
+          <Property Name="ColumnA" Type="bit" />
+          <Property Name="ColumnB" Type="bit" />
+          <Property Name="ColumnC" Type="bit" />
+          <Property Name="LineName" Type="varchar" MaxLength="50" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="TableAId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberOfProcess" Type="int" Nullable="false" />
+          <Property Name="DateTimeNullable" Type="datetime" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="testdbModelStoreContainer">
+          <EntitySet Name="TableB" EntityType="Self.TableB" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TableB].[ColumnA] AS [ColumnA], 
+    [TableB].[ColumnB] AS [ColumnB], 
+    [TableB].[ColumnC] AS [ColumnC], 
+    [TableB].[LineName] AS [LineName], 
+    [TableB].[Created] AS [Created], 
+    [TableB].[TableAId] AS [TableAId], 
+    [TableB].[NumberOfProcess] AS [NumberOfProcess], 
+    [TableB].[DateTimeNullable] AS [DateTimeNullable], 
+    [TableB].[DateTime] AS [DateTime]
+    FROM [dbo].[TableB] AS [TableB]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TableB">
+          <Key>
+            <PropertyRef Name="TableAId" />
+            <PropertyRef Name="NumberOfProcess" />
+            <PropertyRef Name="DateTime" />
+          </Key>
+          <Property Name="ColumnA" Type="Boolean" />
+          <Property Name="ColumnB" Type="Boolean" />
+          <Property Name="ColumnC" Type="Boolean" />
+          <Property Name="LineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="TableAId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberOfProcess" Type="Int32" Nullable="false" />
+          <Property Name="DateTimeNullable" Type="DateTime" Precision="3" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="testdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TableB" EntityType="Self.TableB" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testdbModelStoreContainer" CdmEntityContainer="testdbEntities">
+          <EntitySetMapping Name="TableB">
+            <EntityTypeMapping TypeName="testdbModel.TableB">
+              <MappingFragment StoreEntitySet="TableB">
+                <ScalarProperty Name="ColumnA" ColumnName="ColumnA" />
+                <ScalarProperty Name="ColumnB" ColumnName="ColumnB" />
+                <ScalarProperty Name="ColumnC" ColumnName="ColumnC" />
+                <ScalarProperty Name="LineName" ColumnName="LineName" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="TableAId" ColumnName="TableAId" />
+                <ScalarProperty Name="NumberOfProcess" ColumnName="NumberOfProcess" />
+                <ScalarProperty Name="DateTimeNullable" ColumnName="DateTimeNullable" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
